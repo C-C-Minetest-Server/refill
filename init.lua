@@ -31,7 +31,6 @@ local function do_refill(name, slot_no, itemname)
         local basket_item = inv:get_stack("main", i)
         local basket_meta = basket_item:get_meta()
         local basket_inv = core.deserialize(basket_meta:get_string("inv"))
-        print(dump(basket_inv))
 
         local empty_count = 1
         local basket_found = false
