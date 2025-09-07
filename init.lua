@@ -75,7 +75,10 @@ core.register_globalstep(function()
         if rmb
             and player_last_item[name] and player_last_slot[name] == slot
             and item:is_empty() then
-            core.after(0.2, do_refill, name, player_last_slot[name], player_last_item[name])
+            local def = core.registered_items[player_last_item[name]]
+            if def and def.stack_max ~= 1 then
+                core.after(0.2, do_refill, name, player_last_slot[name], player_last_item[name])
+            end
         end
 
         player_last_slot[name] = slot
